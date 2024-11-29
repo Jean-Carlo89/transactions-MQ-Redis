@@ -2,13 +2,17 @@ import { IsNotEmpty, IsNumber, Min, IsString, Matches } from 'class-validator';
 
 export class CreateRechargeDto {
   @IsNotEmpty()
-  @IsNumber()
-  userId: number;
+  @IsString()
+  user_id: string;
 
+  //*** general valdiation fow worldwide numbers*/
   @IsNotEmpty()
   @IsString()
-  @Matches(/^\d{10,15}$/, { message: 'Invalid phone number format' })
-  phoneNumber: string;
+  @Matches(/^\+\d{1,3}\d{7,15}$/, {
+    message:
+      'Property "phone_number" has wrong value $value, it must be in the international format starting with "+" and include country code and number',
+  })
+  phone_number: string;
 
   @IsNotEmpty()
   @IsNumber()
