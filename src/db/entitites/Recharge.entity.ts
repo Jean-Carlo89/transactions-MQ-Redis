@@ -31,7 +31,7 @@ export class Recharge {
 }
 
 export enum RechargeStatus {
-  PRIVATE = 'PRIVATE',
-  PUBLIC = 'PUBLIC',
-  DRAFT = 'DRAFT',
+  SUCCESSFUL = 'OK',
+  FAILED = 'FAILED',
+  PENDING = 'PENDING',
 }

@@ -1,7 +1,15 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+  Query,
+} from '@nestjs/common';
 import { RechargeService } from './recharge.service';
 import { CreateRechargeDto } from './dto/create-recharge.dto';
-import { UpdateRechargeDto } from './dto/update-recharge.dto';
 
 @Controller('recharge')
 export class RechargeController {
@@ -17,18 +25,24 @@ export class RechargeController {
     return this.rechargeService.findAll();
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.rechargeService.findOne(+id);
+  @Get('status')
+  async findOneByUserAdnPhone(
+    @Query('userId') userId: string,
+    @Query('phoneNumber') phoneNumber: string,
+  ) {
+    return this.rechargeService.findRechargeByUserAndPhone(userId, phoneNumber);
   }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateRechargeDto: UpdateRechargeDto) {
-    return this.rechargeService.update(+id, updateRechargeDto);
-  }
+  // @Patch(':id')
+  // update(
+  //   @Param('id') id: string,
+  //   @Body() updateRechargeDto: UpdateRechargeDto,
+  // ) {
+  //   return this.rechargeService.update(+id, updateRechargeDto);
+  // }
 
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.rechargeService.remove(+id);
-  }
+  // @Delete(':id')
+  // remove(@Param('id') id: string) {
+  //   return this.rechargeService.remove(+id);
+  // }
 }
