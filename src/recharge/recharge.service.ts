@@ -1,6 +1,7 @@
 import { HttpException, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Recharge, RechargeStatus } from 'src/db/entitites/Recharge.entity';
+// import { Recharge, RechargeStatus } from 'src/db/entitites/Recharge.entity';
+import { Recharge, RechargeStatus } from '../db/entitites/Recharge.entity';
 import { Repository } from 'typeorm';
 import { CreateRechargeDto } from './dto/create-recharge.dto';
 import { UpdateRechargeDto } from './dto/update-recharge.dto';
