@@ -38,15 +38,17 @@ export class RechargeService {
     const recharge = await this.rechargeRepository.findOne({
       where: { user_id: userId, phone_number: phoneNumber },
     });
-
     const response = { recarga_id: recharge.id, ...recharge };
-
     delete response.id;
     return response;
   }
 
   update(id: number, updateRechargeDto: UpdateRechargeDto) {
     return `This action updates a #${id} recharge`;
+  }
+
+  updateRechargeStatus(id: string, status: RechargeStatus) {
+    return this.rechargeRepository.update(id, { status });
   }
 
   remove(id: number) {

@@ -31,7 +31,7 @@ export class Recharge {
 }
 
 export enum RechargeStatus {
-  SUCCESSFUL = 'OK',
+  SUCCESSFUL = 'SUCCESS',
   FAILED = 'FAILED',
   PENDING = 'PENDING',
 }

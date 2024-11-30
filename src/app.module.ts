@@ -6,6 +6,7 @@ import { config as dotenvConfig } from 'dotenv';
 import { Recharge } from './db/entitites/Recharge.entity';
 import { RechargeModule } from './recharge/recharge.module';
 import { BullModule } from '@nestjs/bull';
+import { BullQueueServiceService } from './bull-queue-service/bull-queue-service.service';
 dotenvConfig({ path: `.env.${process.env.NODE_ENV}` });
 @Module({
   imports: [
@@ -29,6 +30,6 @@ dotenvConfig({ path: `.env.${process.env.NODE_ENV}` });
     }),
     RechargeModule,
   ],
-  providers: [],
+  providers: [BullQueueServiceService],
 })
 export class AppModule {}

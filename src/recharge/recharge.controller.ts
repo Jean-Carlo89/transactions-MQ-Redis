@@ -1,3 +1,4 @@
+import { BullQueueServiceService } from './../bull-queue-service/bull-queue-service.service';
 import {
   Controller,
   Get,
@@ -13,11 +14,18 @@ import { CreateRechargeDto } from './dto/create-recharge.dto';
 
 @Controller('recharge')
 export class RechargeController {
-  constructor(private readonly rechargeService: RechargeService) {}
+  constructor(
+    private readonly rechargeService: RechargeService,
+    private readonly queueService: BullQueueServiceService,
+  ) {}
 
   @Post()
-  create(@Body() createRechargeDto: CreateRechargeDto) {
-    return this.rechargeService.create(createRechargeDto);
+  async create(@Body() createRechargeDto: CreateRechargeDto) {
+    const recharge = await this.rechargeService.create(createRechargeDto);
+
+    await this.queueService.addRechargeToQueue(recharge.recarga_id);
+
+    return recharge;
   }
 
   @Get()
