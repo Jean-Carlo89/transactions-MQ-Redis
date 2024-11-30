@@ -35,9 +35,10 @@ export class RechargeController {
 
   @Get('status')
   async findOneByUserAdnPhone(
-    @Query('userId') userId: string,
-    @Query('phoneNumber') phoneNumber: string,
+    @Query('user_id') userId: string,
+    @Query('phone_number') phoneNumber: string,
   ) {
+    phoneNumber = phoneNumber.replace(/ /g, '+');
     return this.rechargeService.findRechargeByUserAndPhone(userId, phoneNumber);
   }
 
