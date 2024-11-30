@@ -34,4 +34,5 @@ export enum RechargeStatus {
   SUCCESSFUL = 'SUCCESS',
   FAILED = 'FAILED',
   PENDING = 'PENDING',
+  COMPLETED = 'COMPLETED',
 }
