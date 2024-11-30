@@ -5,13 +5,13 @@
 Content-Type: application/json
 
 { 
-  "user_id": "1234", 
-  "phone_number": "+15551234567", 
-  "amount": 0.02
+  "user_id": "12346", 
+  "phone_number": "+15551234587", 
+  "amount": 10.78
 }
 
 
 ###
 
-GET http://localhost:3000/recharge/status?user_id=123&phone_number=+15551234567 
+GET http://localhost:3000/recharge/status?user_id=12346&phone_number=+15551234587 
 Content-Type: application/json
