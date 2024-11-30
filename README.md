@@ -15,6 +15,7 @@ docker compose up ou docker-compose up a depender da versão instalada
 - **Redis:** Porta `6379`
 - **MySQL:** Porta `3306`
 - **App:** Porta `3000`
+> Essas portas precisarão estar livres na máquina local
 
 ### Arquivos de Configuração:
 - As configurações de ambiente para produção estão definidas no arquivo `.env.prod`.
