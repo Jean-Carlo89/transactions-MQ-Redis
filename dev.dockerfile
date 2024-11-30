@@ -8,6 +8,6 @@ WORKDIR /home/node/app
 
 USER node
 
-CMD ["npm", "run", "start:dev"]
+CMD ["npm", "run", "start"]
 
 # CMD tail -f /dev/null

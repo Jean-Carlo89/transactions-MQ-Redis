@@ -5,10 +5,17 @@ import { AppService } from './app.service';
 import { config as dotenvConfig } from 'dotenv';
 import { Recharge } from './db/entitites/Recharge.entity';
 import { RechargeModule } from './recharge/recharge.module';
-
+import { BullModule } from '@nestjs/bull';
 dotenvConfig({ path: `.env.${process.env.NODE_ENV}` });
 @Module({
   imports: [
+    BullModule.forRoot({
+      redis: {
+        host: process.env.REDIS_HOST,
+        port: parseInt(process.env.REDIS_PORT),
+      },
+    }),
+    BullModule.registerQueue({ name: 'recharges' }),
     TypeOrmModule.forRoot({
       type: 'mysql',
 
