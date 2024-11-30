@@ -1,85 +1,87 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+# Guia para Executar o Projeto
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+## 1. Rodar por Docker
 
-## Description
-
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
-
-## Project setup
-
+### Comando para subir as instâncias:
 ```bash
-$ npm install
+docker compose up ou docker-compose up a depender da versão instalada
 ```
 
-## Compile and run the project
 
+> Este comando subirá as instâncias do Redis, MySQL e a aplicação.
+
+### Configurações Padrão:
+- **Redis:** Porta `6379`
+- **MySQL:** Porta `3306`
+- **App:** Porta `3000`
+
+### Arquivos de Configuração:
+- As configurações de ambiente para produção estão definidas no arquivo `.env.prod`.
+
+### Testes Rápidos:
+- Há um arquivo `api.http` incluído no projeto para facilitar testes rápidos dos endpoints.
+
+
+> Para utilizar o arquivo `api.http` no VS Code, é necessário instalar a extensão [Rest Client](https://marketplace.visualstudio.com/items?itemName=humao.rest-client).
+
+### Ferramentas Alternativas:
+- Você pode utilizar o **Postman** ou qualquer outra ferramenta similar para testar os endpoints.
+
+---
+
+## 2. Executar Localmente
+
+### Comando para rodar o app localmente:
 ```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
+npm run dev
 ```
 
-## Run tests
+**Comentário:**
+> Para evitar a necessidade de instalar o MySQL e Redis localmente, é recomendado subir os containers com o comando anterior do Docker Compose antes de executar a aplicação localmente. 
 
-```bash
-# unit tests
-$ npm run test
+### Recomendações:
+- Suba os serviços necessários com o comando:
+  ```bash
+  docker compose up db redis
+  ```
 
-# e2e tests
-$ npm run test:e2e
+- A aplicação rodará na porta `3001` quando executada localmente.
+- As configurações de ambiente para desenvolvimento estão no arquivo `.env.dev`.
 
-# test coverage
-$ npm run test:cov
-```
+---
 
-## Resources
+## 3. Estrutura do Projeto
 
-Check out a few resources that may come in handy when working with NestJS:
+**Comentário:**
+> Procurei seguir os exemplos dados para moldar as respostas e estrutura do projeto.
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+- As implementações de **Consumers** e **Producers** foram feitas seguindo os exemplos disponibilizados na documentação oficial de **Queues do Nest.js**.
 
-## Support
+---
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+## 4. Testes Rápidos
 
-## Stay in touch
+### Arquivo `api.http`:
+O projeto inclui o arquivo `api.http`, que permite realizar testes rápidos dos endpoints.
 
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+### Requisitos:
+- **VS Code** com a extensão [Rest Client](https://marketplace.visualstudio.com/items?itemName=humao.rest-client).
 
-## License
+**Comentário:**
+> Este arquivo facilita a realização de requisições HTTP diretamente pelo editor de código.
 
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+### Como Usar:
+1. Abra o arquivo `api.http` no **VS Code**.
+2. Clique na opção `Send Request` ao lado das requisições no arquivo para executá-las.
+
+---
+
+## 5. Ferramentas Alternativas para Teste
+
+Além do `api.http`, você pode testar os endpoints utilizando:
+- **Postman**
+- **Insomnia**
+- **Qualquer outra ferramenta de requisições HTTP**
+
+---

@@ -1,17 +1,17 @@
 # @name createRecharge
 
 
- POST http://localhost:3000/recharge
+ POST http://localhost:3000/api/recharge
 Content-Type: application/json
 
 { 
-  "user_id": "12346", 
-  "phone_number": "+15551234587", 
-  "amount": 10.78
+  "user_id": "1", 
+  "phone_number": "+17551234587", 
+  "amount": 12.78
 }
 
 
 ###
 
-GET http://localhost:3000/recharge/status?user_id=12346&phone_number=+15551234587 
+GET http://localhost:3000/api/recharge/status?user_id=1&phone_number=+17551234587 
 Content-Type: application/json

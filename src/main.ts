@@ -1,4 +1,8 @@
-import { BadRequestException, ValidationPipe } from '@nestjs/common';
+import {
+  BadRequestException,
+  RequestMethod,
+  ValidationPipe,
+} from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { createCustomExceptionFactory } from './validation/custom-excpetion';
@@ -14,7 +18,9 @@ async function bootstrap() {
       exceptionFactory: createCustomExceptionFactory,
     }),
   );
-
+  app.setGlobalPrefix('api', {
+    exclude: [{ path: '/', method: RequestMethod.GET }],
+  });
   await app.listen(process.env.PORT || 3000);
 }
 bootstrap();
