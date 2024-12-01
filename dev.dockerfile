@@ -6,6 +6,12 @@ RUN npm install -g @nestjs/cli@10.3.2
 
 WORKDIR /home/node/app
 
+COPY package*.json ./
+
+RUN npm install
+
+COPY . .
+
 USER node
 
 CMD ["npm", "run", "start"]
