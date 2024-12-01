@@ -1,10 +1,13 @@
 
 # Guia para Executar o Projeto
 
+
+## Clone o repositório na maquina local e entre na pasta baixada
 ## 1. Rodar por Docker
 
 ### Comando para subir as instâncias:
 ```bash
+
 docker compose up ou docker-compose up a depender da versão instalada
 ```
 
@@ -86,3 +89,10 @@ Além do `api.http`, você pode testar os endpoints utilizando:
 - **Qualquer outra ferramenta de requisições HTTP**
 
 ---
+
+
+
+## 6. O projeto contém testes do serviço com:
+```bash
+npm test
+```
