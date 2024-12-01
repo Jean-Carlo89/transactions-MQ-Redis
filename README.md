@@ -2,7 +2,7 @@
 # Guia para Executar o Projeto
 
 
-## Clone o repositório na maquina local e entre na pasta baixada
+## Clone o repositório na maquina local e entre na pasta baixada. Todos os comandos deverão ser executados em um terminal dentro da pasta baixada.
 ## 1. Rodar por Docker
 
 ### Comando para subir as instâncias:
@@ -101,6 +101,9 @@ Além do `api.http`, você pode testar os endpoints utilizando:
 
 
 ## 6. O projeto contém testes do serviço com:
+
+Também é necessário ter a versão do node>20
 ```bash
+npm i
 npm test
 ```
