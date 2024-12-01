@@ -2,7 +2,7 @@
 # Guia para Executar o Projeto
 
 
-## Clone o repositório na maquina local e entre na pasta baixada. Todos os comandos deverão ser executados em um terminal dentro da pasta baixada.
+## Clone o repositório na maquina local e entre na pasta baixada. Todos os comandos deverão ser executados em um terminal dentro dela.
 ## 1. Rodar por Docker
 
 ### Comando para subir as instâncias:
