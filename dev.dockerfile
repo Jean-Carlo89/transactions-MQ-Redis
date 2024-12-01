@@ -12,8 +12,6 @@ RUN npm install
 
 COPY . .
 
-USER node
-
 CMD ["npm", "run", "start"]
 
 # CMD tail -f /dev/null
