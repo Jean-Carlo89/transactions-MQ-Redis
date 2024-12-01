@@ -37,17 +37,25 @@ docker compose up ou docker-compose up a depender da versão instalada
 ## 2. Executar Localmente
 
 ### Comando para rodar o app localmente:
-```bash
-npm run dev
-```
 
 **Comentário:**
-> Para evitar a necessidade de instalar o MySQL e Redis localmente, é recomendado subir os containers com o comando anterior do Docker Compose antes de executar a aplicação localmente. 
+> O sistema local precisará da versão node >20
+
+
+**Comentário:**
+> Para evitar a necessidade de instalar o MySQL e Redis localmente, é recomendado subir os containers deles com o comando do Docker Compose antes de executar a aplicação localmente. 
 
 ### Recomendações:
 - Suba os serviços necessários com o comando:
   ```bash
   docker compose up db redis
+  ```
+
+ Dentro da pasta baixada pelo clonagem do repositório :
+
+  ```bash
+  npm i
+  npm run dev
   ```
 
 - A aplicação rodará na porta `3001` quando executada localmente.
