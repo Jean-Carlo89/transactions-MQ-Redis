@@ -10,8 +10,11 @@ COPY package*.json ./
 
 RUN npm install
 
-# COPY . .
+COPY . .
 
-CMD ["npm", "run", "start"]
+#CMD ["npm", "run", "start"]
+
+CMD sh -c "npm install && npm run start"
+#CMD ["npm", "install"]
 
 # CMD tail -f /dev/null
