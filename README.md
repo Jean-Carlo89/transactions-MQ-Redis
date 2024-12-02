@@ -10,7 +10,7 @@
 
 docker compose up ou docker-compose up a depender da versão instalada
 ```
-
+- No arquivo `api.http` incluído no projeto existem exemplos da rota de POST e a de GET.
 
 > Este comando subirá as instâncias do Redis, MySQL e a aplicação.
 
