@@ -1,7 +1,9 @@
 Projeto simulação de transação
 ---------------------------------------
 ### 1\. Apresentação do Projeto
-Esse é um projeto pessoal que usei para praticar ferramentas de mensagaeria e bancos como o Redis
+Esse é um projeto pessoal que usei para praticar ferramentas de mensagaeria e bancos como o Redis usando Nodejs e Nest
+
+Tecnologias : Nodejs, Redis, MySQL, BullMQ, Nest, Docker
 
 Vídeo do projeto rodando : https://docs.google.com/videos/d/1xHAtr3ymJ1xZEdc72ZMdaGcPx42zV_6QSe4loDHkDy8/edit?usp=sharing
 
