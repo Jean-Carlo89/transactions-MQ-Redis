@@ -63,9 +63,23 @@ Para utilizar este arquivo, é necessário ter a extensão [**Rest Client**](htt
 
 **Exemplo de Requisições:**
 
-HTTP
+```
+POST
+ http://localhost:3000/api/recharge
+Content-Type: application/json
+body: {    "user_id": "1",    "phone_number": "+17551234587",    "amount": 12.78  } 
+```
 
-`   @name createRecharge  POST http://localhost:3000/api/recharge  Content-Type: application/json  {    "user_id": "1",    "phone_number": "+17551234587",    "amount": 12.78  }  ###  GET http://localhost:3000/api/recharge/status?user_id=1&phone_number=+17551234587  Content-Type: application/json   `
+```
+   GET
+ http://localhost:3000/api/recharge/status?user_id=1&phone_number=+17551234587
+
+Content-Type: application/json   
+```
+
+
+
+
 
 #### **Usando Postman, Insomnia ou Ferramentas Similares**
 
