@@ -24,18 +24,18 @@ Para começar, clone o repositório para sua máquina local e navegue para a pas
 
 #### **Setup Inicial**
 
-
+Clonar o repositório e entrar na pasta baixada
 
 
 
 ```bash
-git clone https://github.com/Jean-Carlo89/hiperbanco-test.git 
+git clone https://github.com/Jean-Carlo89/transactions-MQ-Redis.git
 
 ```
 
 
 ```bash
-cd
+cd  transactions-MQ-Redis
 ```
 
 
