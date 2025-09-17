@@ -3,7 +3,7 @@ Projeto simulação de transação
 ### 1\. Apresentação do Projeto
 Esse é um projeto pessoal que usei para praticar ferramentas de mensagaeria e bancos como o Redis
 
-<video src="https://docs.google.com/videos/d/1PPge1ZvAh4Ob0lqKdJyRvsY8kVEFcefCEwcgw-STGck/edit?usp=sharing" controls></video>
+Vídeo do projeto rodando : https://docs.google.com/videos/d/1xHAtr3ymJ1xZEdc72ZMdaGcPx42zV_6QSe4loDHkDy8/edit?usp=sharing
 
 A aplicação foi projetada para processar transações de forma assíncrona. A lógica do projeto funciona da seguinte forma:
 
