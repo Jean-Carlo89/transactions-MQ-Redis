@@ -18,6 +18,8 @@ A aplicação foi projetada para processar transações de forma assíncrona. A 
 4.  **Atualização de Status:** Após a espera, o serviço atualiza o status do registro no MySQL, alterando-o para "success" (sucesso) ou "rejected" (reprovado), finalizando o ciclo da transação.
     
 5. *   As portas padrão em que os serviços estarão rodando são: **App na 3000**, **MySQL na 3306** e **Redis na 6379**.
+
+6. * Como não há interface, podem ser usadas as GUI do Redis e do DBeaver para ver os dados passando pelas suas inntâncias  
 ### 2\. Guia para Executar com Docker
 
 Para começar, clone o repositório para sua máquina local e navegue para a pasta baixada. Todos os comandos seguintes devem ser executados em um terminal dentro desta pasta.
