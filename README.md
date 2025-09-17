@@ -1,109 +1,61 @@
+Guia para Executar o Projeto com Docker
+---------------------------------------
 
-# Guia para Executar o Projeto
+Para rodar este projeto, você precisará ter o **Docker** e o **Docker Compose** instalados em sua máquina. A execução é feita de forma simples, orquestrando todas as instâncias necessárias.
 
+### 1\. Apresentação do Projeto
 
-## Clone o repositório na maquina local e entre na pasta baixada. Todos os comandos deverão ser executados em um terminal dentro dela.
-## 1. Rodar por Docker
+A aplicação foi projetada para processar transações de forma assíncrona. A lógica do projeto funciona da seguinte forma:
 
-### Comando para subir as instâncias:
-```bash
+1.  **Registro Inicial (Status "Pendente"):** Ao receber uma requisição POST com dados de transação, a aplicação salva o registro no banco de dados **MySQL** com um status inicial de "pending" (pendente).
+    
+2.  **Serviço de Mensagens:** Simultaneamente, a transação é enviada para uma fila de mensagens no **Redis**. Para este projeto, foi utilizada a biblioteca **BullMQ**, mas a mesma lógica poderia ser implementada com outras ferramentas de filas, como o **RabbitMQ** ou similares.
+    
+3.  **Processamento Assíncrono:** Um serviço "consumidor" lê a transação da fila do Redis. Para simular um processamento externo, como uma confirmação de transação bancária, ele aguarda por cerca de 20 segundos.
+    
+4.  **Atualização de Status:** Após a espera, o serviço atualiza o status do registro no MySQL, alterando-o para "success" (sucesso) ou "rejected" (reprovado), finalizando o ciclo da transação.
+    
 
-docker compose up ou docker-compose up a depender da versão instalada
-```
-- No arquivo `api.http` incluído no projeto existem exemplos da rota de POST e a de GET.
+### 2\. Guia para Executar com Docker
 
-> Este comando subirá as instâncias do Redis, MySQL e a aplicação.
+Para começar, clone o repositório para sua máquina local e navegue para a pasta baixada. Todos os comandos seguintes devem ser executados em um terminal dentro desta pasta.
 
-### Configurações Padrão:
-- **Redis:** Porta `6379`
-- **MySQL:** Porta `3306`
-- **App:** Porta `3000`
-> Essas portas precisarão estar livres na máquina local
+#### **Setup Inicial**
 
-### Arquivos de Configuração:
-- As configurações de ambiente para produção estão definidas no arquivo `.env.prod`.
+Bash
 
-### Testes Rápidos:
-- Há um arquivo `api.http` incluído no projeto para facilitar testes rápidos dos endpoints.
+`git clone https://github.com/Jean-Carlo89/hiperbanco-test.git  ` 
+`cd pasta`
 
+#### **Executando com Docker Compose**
 
-> Para utilizar o arquivo `api.http` no VS Code, é necessário instalar a extensão [Rest Client](https://marketplace.visualstudio.com/items?itemName=humao.rest-client).
+O arquivo docker-compose.yml do projeto foi configurado para iniciar as instâncias necessárias. Para subir os serviços, basta executar o comando:
 
-### Ferramentas Alternativas:
-- Você pode utilizar o **Postman** ou qualquer outra ferramenta similar para testar os endpoints.
+Bash
 
----
+`   docker compose up   `
 
-## 2. Executar Localmente
+*   Este comando irá subir o banco de dados **MySQL**, a instância do **Redis** e a aplicação backend.
+    
+*   As portas padrão em que os serviços estarão rodando são: **App na 3000**, **MySQL na 3306** e **Redis na 6379**.
+    
 
-### Comando para rodar o app localmente:
+> **Importante:** Essas portas precisam estar livres em sua máquina local.
 
-**Comentário:**
-> O sistema local precisará da versão node >20
+### 3\. Testando os Endpoints
 
+Você pode testar as rotas da aplicação de forma rápida usando o arquivo api.http ou ferramentas de requisição HTTP.
 
-**Comentário:**
-> Para evitar a necessidade de instalar o MySQL e Redis localmente, é recomendado subir os containers deles com o comando do Docker Compose antes de executar a aplicação localmente. 
+#### **Usando o arquivo api.http no VS Code**
 
-### Recomendações:
-- Suba os serviços necessários com o comando:
-  ```bash
-  docker compose up db redis
-  ```
+Para utilizar este arquivo, é necessário ter a extensão [**Rest Client**](https://marketplace.visualstudio.com/items?itemName=humao.rest-client) instalada no VS Code.
 
- Dentro da pasta baixada pelo clonagem do repositório :
+**Exemplo de Requisições:**
 
-  ```bash
-  npm i
-  npm run dev
-  ```
+HTTP
 
-- A aplicação rodará na porta `3001` quando executada localmente.
-- As configurações de ambiente para desenvolvimento estão no arquivo `.env.dev`.
+`   @name createRecharge  POST http://localhost:3000/api/recharge  Content-Type: application/json  {    "user_id": "1",    "phone_number": "+17551234587",    "amount": 12.78  }  ###  GET http://localhost:3000/api/recharge/status?user_id=1&phone_number=+17551234587  Content-Type: application/json   `
 
----
+#### **Usando Postman, Insomnia ou Ferramentas Similares**
 
-## 3. Estrutura do Projeto
-
-**Comentário:**
-> Procurei seguir os exemplos dados para moldar as respostas e estrutura do projeto.
-
-- As implementações de **Consumers** e **Producers** foram feitas seguindo os exemplos disponibilizados na documentação oficial de **Queues do Nest.js**.
-
----
-
-## 4. Testes Rápidos
-
-### Arquivo `api.http`:
-O projeto inclui o arquivo `api.http`, que permite realizar testes rápidos dos endpoints.
-
-### Requisitos:
-- **VS Code** com a extensão [Rest Client](https://marketplace.visualstudio.com/items?itemName=humao.rest-client).
-
-**Comentário:**
-> Este arquivo facilita a realização de requisições HTTP diretamente pelo editor de código.
-
-### Como Usar:
-1. Abra o arquivo `api.http` no **VS Code**.
-2. Clique na opção `Send Request` ao lado das requisições no arquivo para executá-las.
-
----
-
-## 5. Ferramentas Alternativas para Teste
-
-Além do `api.http`, você pode testar os endpoints utilizando:
-- **Postman**
-- **Insomnia**
-- **Qualquer outra ferramenta de requisições HTTP**
-
----
-
-
-
-## 6. O projeto contém testes do serviço com:
-
-Também é necessário ter a versão do node>20
-```bash
-npm i
-npm test
-```
+Você também pode copiar as informações dos exemplos acima e utilizá-las em ferramentas como **Postman**, **Insomnia** ou qualquer outro cliente de requisições HTTP para testar a aplicação.
