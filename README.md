@@ -61,7 +61,7 @@ Você pode testar as rotas da aplicação de forma rápida usando o arquivo api.
 
 #### **Usando o arquivo api.http no VS Code**
 
-Para utilizar este arquivo, é necessário ter a extensão [**Rest Client**](https://marketplace.visualstudio.com/items?itemName=humao.rest-client) instalada no VS Code.
+Para utilizar este arquivo, é recomendado ter a extensão [**Rest Client**](https://marketplace.visualstudio.com/items?itemName=humao.rest-client) instalada no VS Code.
 
 **Exemplo de Requisições:**
 
@@ -79,10 +79,5 @@ body: {    "user_id": "1",    "phone_number": "+17551234587",    "amount": 12.78
 Content-Type: application/json   
 ```
 
-
-
-
-
-#### **Usando Postman, Insomnia ou Ferramentas Similares**
 
 Você também pode copiar as informações dos exemplos acima e utilizá-las em ferramentas como **Postman**, **Insomnia** ou qualquer outro cliente de requisições HTTP para testar a aplicação.
