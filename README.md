@@ -1,11 +1,9 @@
-Guia para Executar o Projeto com Docker
+Projeto simulação de transação
 ---------------------------------------
-
-Para rodar este projeto, você precisará ter o **Docker** e o **Docker Compose** instalados em sua máquina. A execução é feita de forma simples, orquestrando todas as instâncias necessárias.
-
 ### 1\. Apresentação do Projeto
 Esse é um projeto pessoal que usei para praticar ferramentas de mensagaeria e bancos como o Redis
 
+<video src="https://docs.google.com/videos/d/1PPge1ZvAh4Ob0lqKdJyRvsY8kVEFcefCEwcgw-STGck/edit?usp=sharing" controls></video>
 
 A aplicação foi projetada para processar transações de forma assíncrona. A lógica do projeto funciona da seguinte forma:
 
@@ -20,6 +18,14 @@ A aplicação foi projetada para processar transações de forma assíncrona. A 
 5. *   As portas padrão em que os serviços estarão rodando são: **App na 3000**, **MySQL na 3306** e **Redis na 6379**.
 
 6. * Como não há interface, podem ser usadas as GUI do Redis e do DBeaver para ver os dados passando pelas suas inntâncias  
+
+
+Guia para Executar o Projeto com Docker
+---------------------------------------
+
+Para rodar este projeto, você precisará ter o **Docker** e o **Docker Compose** instalados em sua máquina. A execução é feita de forma simples, orquestrando todas as instâncias necessárias.
+
+
 ### 2\. Guia para Executar com Docker
 
 Para começar, clone o repositório para sua máquina local e navegue para a pasta baixada. Todos os comandos seguintes devem ser executados em um terminal dentro desta pasta.
