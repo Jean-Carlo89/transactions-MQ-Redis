@@ -22,18 +22,29 @@ Para começar, clone o repositório para sua máquina local e navegue para a pas
 
 #### **Setup Inicial**
 
-Bash
 
-`git clone https://github.com/Jean-Carlo89/hiperbanco-test.git  ` 
-`cd pasta`
+
+
+
+```bash
+git clone https://github.com/Jean-Carlo89/hiperbanco-test.git 
+cd
+```
+
+
+```bash
+cd
+```
+
 
 #### **Executando com Docker Compose**
 
 O arquivo docker-compose.yml do projeto foi configurado para iniciar as instâncias necessárias. Para subir os serviços, basta executar o comando:
 
-Bash
+```Bash
 
-`   docker compose up   `
+  docker compose up
+ ```
 
 *   Este comando irá subir o banco de dados **MySQL**, a instância do **Redis** e a aplicação backend.
     
