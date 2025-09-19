@@ -5,6 +5,8 @@ Esse é um projeto pessoal que usei para praticar ferramentas de mensagaeria e b
 
 Tecnologias : Nodejs, Redis, MySQL, BullMQ, Nest, Docker
 
+Deploy em uma maquina virtual da Google Cloud Platform (frontend paenas para testes mais rápidos): http://34.58.32.108:3001
+
 Vídeo do projeto rodando : https://docs.google.com/videos/d/1xHAtr3ymJ1xZEdc72ZMdaGcPx42zV_6QSe4loDHkDy8/edit?usp=sharing
 
 A aplicação foi projetada para processar transações de forma assíncrona. A lógica do projeto funciona da seguinte forma:
