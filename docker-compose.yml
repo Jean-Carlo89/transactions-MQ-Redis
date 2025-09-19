@@ -5,23 +5,31 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: nest
-    ports: 
+    ports:
       - 3306:3306
 
   app:
-    build: 
+    build:
       dockerfile: ./dev.dockerfile
     ports:
       - 3000:3000
     volumes:
       - .:/home/node/app
-    depends_on: 
-    
+    depends_on:
       - db
 
   redis:
     image: redis:latest
     container_name: redis
     ports:
-      - "6379:6379"
+      - '6379:6379'
     restart: always
+
+  frontend:
+    build:
+      context: ./front
+      dockerfile: Dockerfile
+    ports:
+      - '3001:80'
+    depends_on:
+      - app
