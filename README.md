@@ -13,15 +13,17 @@ A aplicação foi projetada para processar transações de forma assíncrona. A 
 
 1.  **Registro Inicial (Status "Pendente"):** Ao receber uma requisição POST com dados de transação, a aplicação salva o registro no banco de dados **MySQL** com um status inicial de "pending" (pendente).
     
-2.  **Serviço de Mensagens:** Simultaneamente, a transação é enviada para uma fila de mensagens no **Redis**. Para este projeto, foi utilizada a biblioteca **BullMQ**, mas a mesma lógica poderia ser implementada com outras ferramentas de filas, como o **RabbitMQ** ou similares.
+2.  **Serviço de Mensagens:** Simultaneamente, a transação é enviada para uma fila de mensagens no **Redis**. Para este projeto, foi utilizada a biblioteca **BullMQ**, mas a mesma lógica poderia ser implementada com outras ferramentas de filas, como o **RabbitMQ** 
     
 3.  **Processamento Assíncrono:** Um serviço "consumidor" lê a transação da fila do Redis. Para simular um processamento externo, como uma confirmação de transação bancária, ele aguarda por cerca de 20 segundos.
     
-4.  **Atualização de Status:** Após a espera, o serviço atualiza o status do registro no MySQL, alterando-o para "success" (sucesso) ou "rejected" (reprovado), finalizando o ciclo da transação.
+4.  **Atualização de Status:** Após a espera, o serviço atualiza o status do registro no MySQL, alterando-o para sucesso ou reprovado, finalizando o ciclo da transação.
     
 5. *   As portas padrão em que os serviços estarão rodando são: **App na 3000**, **MySQL na 3306** e **Redis na 6379**.
 
-6. * Como não há interface, podem ser usadas as GUI do Redis e do DBeaver para ver os dados passando pelas suas inntâncias  
+6. * Como não há interface, podem ser usadas as GUI do Redis e do DBeaver para ver os dados passando pelas suas inntâncias
+
+7. * O Front end de testes roda na porta 3001 do localhost após o docker subir os containers, então é necessário que essa porta esteja livre da máquina local.
 
 
 Guia para Executar o Projeto com Docker
